@@ -16,22 +16,9 @@ public class Main {
         people.add(new Person("Екатерина", "Вознесенская", 12));
 
 
-        Collections.sort(people, (p1, p2) -> {
-            int len1 = p1.getSurname().split("\\P{IsAlphabetic}+").length;
-            int len2 = p2.getSurname().split("\\P{IsAlphabetic}+").length;
-            int maxLen = 3;
+        people.removeIf(person -> person.getAge() < 18);
+        people.forEach(System.out::println);
 
-            if (Math.min(len1, maxLen) != Math.min(len2, maxLen)) {
-                return Integer.compare(len1, len2);
-            }
-            return Integer.compare(p1.getAge(), p2.getAge());
-        });
-
-
-
-//        Collections.sort(people, new PersonComparator(3));
-//        Collections.reverse(people);
-//        System.out.println(people);
     }
 
 }
